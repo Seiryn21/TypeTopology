@@ -53,9 +53,9 @@ Question𝟘 (Πᴹ , eq) = recurs A (Πᴹ A) (eq A)
   A x = 𝟘-elim x
 
   recurs : (A : 𝟘 → 𝕄) → (x : 𝕄)
-       → ¬(x ＝ ssup
-                (Π x ꞉ 𝟘 , 𝕄-root (A x))
-                (λ g → Πᴹ (λ x → 𝕄-forest (A x) (g x))))
+         → ¬(x ＝ ssup
+                  (Π x ꞉ 𝟘 , 𝕄-root (A x))
+                  (λ g → Πᴹ (λ x → 𝕄-forest (A x) (g x))))
   recurs A (ssup X φ) eq' = recurs A' (φ I) II
    where
     I : X
@@ -84,8 +84,8 @@ module _ {X : 𝓤 ̇ } where
  <-is-well-founded x f = acc (rec' x f (f x) refl)
   where 
    rec' : (x : X) (f : X → 𝕄) (m : 𝕄) → m ＝ f x
-      → (g : X → 𝕄) → g < f
-      → is-accessible g
+        → (g : X → 𝕄) → g < f
+        → is-accessible g
    rec' x f (ssup Y φ) eq g (smaller p) =
     acc (rec' x g (φ II) (III ∙ pr₂ (p x)))
     where
@@ -143,7 +143,7 @@ module _ {X : 𝓤 ̇ } where
                                        (prev acc₂ _ _))
 
     IV : (A : X → 𝕄) → (acc₁ acc₂ : is-accessible A)
-        → Πᴹ' A acc₁ ≃ᴹ Πᴹ' A acc₂
+       → Πᴹ' A acc₁ ≃ᴹ Πᴹ' A acc₂
     IV A = transfinite-induction'
             (λ A → (acc₁ acc₂ : is-accessible A) → Πᴹ' A acc₁ ≃ᴹ Πᴹ' A acc₂)
             III
